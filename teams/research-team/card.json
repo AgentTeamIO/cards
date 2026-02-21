@@ -1,0 +1,48 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "team",
+  "slug": "research-team",
+  "version": "1.0.0",
+  "name": "Research & Analysis Team",
+  "description": "A research team with agents for web research, data analysis, and report writing",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["research", "analysis", "writing"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "agents": [
+      {
+        "role": "researcher",
+        "engine": "claude-code",
+        "skills": ["analysis"],
+        "description": "Web research, literature review, and source gathering"
+      },
+      {
+        "role": "analyst",
+        "engine": "claude-code",
+        "skills": ["analysis", "debugging"],
+        "description": "Data analysis, pattern identification, and synthesis"
+      },
+      {
+        "role": "writer",
+        "engine": "claude-code",
+        "skills": ["documentation"],
+        "description": "Report writing, executive summaries, and documentation"
+      }
+    ],
+    "rooms": {
+      "team": true,
+      "custom": ["findings"]
+    },
+    "cli_command": "agentteam up --template research-team",
+    "prerequisites": {
+      "engines": ["claude-code"],
+      "tools": []
+    }
+  }
+}

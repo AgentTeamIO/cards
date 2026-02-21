@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "code-review",
+  "version": "1.0.0",
+  "name": "Systematic Code Review",
+  "description": "Structured code review methodology covering correctness, security, performance, and maintainability with severity-rated findings.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["code-review", "quality", "security", "best-practices"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code", "gemini-cli", "codex"],
+    "content_path": "skills/code-review/skill.md",
+    "inputs": ["codebase", "diff", "pull-request"],
+    "outputs": ["review-comments", "suggestions", "severity-ratings"],
+    "examples": [
+      {
+        "prompt": "Review this PR for security issues",
+        "expected_behavior": "Analyzes code changes for OWASP top 10 vulnerabilities, rates findings by severity, and suggests remediations"
+      },
+      {
+        "prompt": "Review the changes in this diff for correctness",
+        "expected_behavior": "Checks logic errors, edge cases, error handling, and provides inline comments with fix suggestions"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "team",
+  "slug": "property-management",
+  "version": "1.0.0",
+  "name": "Property Management Team",
+  "description": "AI-powered property management team for tenant communication, landlord reporting, and inspection scheduling",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["property-management", "real-estate", "case-study", "propertia"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "agents": [
+      {
+        "role": "tenant-agent",
+        "engine": "claude-code",
+        "skills": ["documentation"],
+        "description": "Tenant communication, maintenance request triage, and lease inquiries"
+      },
+      {
+        "role": "landlord-agent",
+        "engine": "claude-code",
+        "skills": ["analysis"],
+        "description": "Financial reporting, compliance tracking, and landlord communications"
+      },
+      {
+        "role": "inspector-agent",
+        "engine": "claude-code",
+        "skills": ["documentation", "analysis"],
+        "description": "Inspection scheduling, report generation, and property condition tracking"
+      }
+    ],
+    "rooms": {
+      "team": true,
+      "custom": ["maintenance-alerts", "inspections"]
+    },
+    "cli_command": "agentteam up --template property-management",
+    "prerequisites": {
+      "engines": ["claude-code"],
+      "tools": []
+    }
+  }
+}

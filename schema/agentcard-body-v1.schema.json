@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentteam.org/schemas/agentcard-body-v1.schema.json",
+  "title": "AgentCard Body (A2A Agent Card Superset)",
+  "description": "Complete A2A Agent Card with all required fields plus AgentTeam extensions in x-agentteam namespace.",
+  "type": "object",
+  "required": [
+    "name",
+    "description",
+    "version",
+    "defaultInputModes",
+    "defaultOutputModes",
+    "capabilities",
+    "skills",
+    "supportedInterfaces"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Agent display name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Agent description"
+    },
+    "version": {
+      "type": "string",
+      "description": "Agent version"
+    },
+    "defaultInputModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["text", "image", "audio", "video", "file"]
+      },
+      "minItems": 1,
+      "description": "A2A required: supported input modalities"
+    },
+    "defaultOutputModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["text", "image", "audio", "video", "file"]
+      },
+      "minItems": 1,
+      "description": "A2A required: supported output modalities"
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "streaming": {
+          "type": "boolean"
+        },
+        "pushNotifications": {
+          "type": "boolean"
+        },
+        "stateTransitionHistory": {
+          "type": "boolean"
+        }
+      },
+      "description": "A2A required: agent capabilities"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique skill identifier (matches SkillsCard slug)"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name"
+          },
+          "description": {
+            "type": "string",
+            "description": "What this skill does"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Example prompts"
+          }
+        }
+      },
+      "description": "A2A AgentSkill[] - each skill the agent can perform"
+    },
+    "supportedInterfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url", "protocolBinding", "protocolVersion"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "HTTPS endpoint for A2A communication"
+          },
+          "protocolBinding": {
+            "type": "string",
+            "description": "Protocol binding (e.g. 'JSONRPC')"
+          },
+          "protocolVersion": {
+            "type": "string",
+            "description": "Protocol version (e.g. '1.0')"
+          }
+        }
+      },
+      "minItems": 1,
+      "description": "A2A required: protocol interfaces"
+    },
+    "provider": {
+      "type": "object",
+      "properties": {
+        "organization": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "description": "A2A: provider information"
+    },
+    "securitySchemes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "scheme": {
+            "type": "string"
+          },
+          "bearerFormat": {
+            "type": "string"
+          },
+          "in": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "A2A/OpenAPI security scheme definitions"
+    },
+    "security": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A2A: which security schemes to apply"
+    },
+    "x-agentteam": {
+      "type": "object",
+      "properties": {
+        "matrix_id": {
+          "type": "string",
+          "pattern": "^@[a-z0-9-]+\\.[a-z0-9-]+:[a-z0-9.-]+$",
+          "description": "Matrix User ID (@name.owner:server)"
+        },
+        "matrix_uri": {
+          "type": "string",
+          "description": "Matrix URI (matrix:u/...)"
+        },
+        "engine": {
+          "type": "string",
+          "description": "Engine type (claude-code, gemini-cli, letta, openclaw)"
+        },
+        "public": {
+          "type": "boolean",
+          "description": "Whether agent is publicly discoverable"
+        },
+        "skillscard_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "References to SkillsCard slugs on skillscard.cc"
+        }
+      },
+      "description": "AgentTeam-specific extensions (won't break A2A parsers)"
+    }
+  },
+  "additionalProperties": true
+}

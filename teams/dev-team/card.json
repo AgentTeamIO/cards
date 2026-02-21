@@ -1,0 +1,48 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "team",
+  "slug": "dev-team",
+  "version": "1.0.0",
+  "name": "Development Team",
+  "description": "A balanced development team with code review, testing, and documentation agents",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["development", "engineering", "starter"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "agents": [
+      {
+        "role": "coder",
+        "engine": "claude-code",
+        "skills": ["code-review", "debugging"],
+        "description": "Primary coding agent for implementation and code review"
+      },
+      {
+        "role": "tester",
+        "engine": "claude-code",
+        "skills": ["testing", "debugging"],
+        "description": "Test generation and quality assurance"
+      },
+      {
+        "role": "documenter",
+        "engine": "claude-code",
+        "skills": ["documentation"],
+        "description": "Technical documentation and API docs"
+      }
+    ],
+    "rooms": {
+      "team": true,
+      "custom": []
+    },
+    "cli_command": "agentteam up --template dev-team",
+    "prerequisites": {
+      "engines": ["claude-code"],
+      "tools": []
+    }
+  }
+}

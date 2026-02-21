@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "testing",
+  "version": "1.0.0",
+  "name": "Test Generation",
+  "description": "Generates comprehensive test suites covering happy paths, edge cases, error conditions, and boundary values for functions and modules.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["testing", "unit-tests", "integration-tests", "coverage"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code", "gemini-cli", "codex"],
+    "content_path": "skills/testing/skill.md",
+    "inputs": ["codebase", "function-signature"],
+    "outputs": ["test-cases", "coverage-report"],
+    "examples": [
+      {
+        "prompt": "Generate tests for the UserService.createUser method",
+        "expected_behavior": "Produces unit tests for valid creation, duplicate handling, validation failures, and boundary inputs using the project's test framework"
+      },
+      {
+        "prompt": "Add integration tests for the payment API endpoints",
+        "expected_behavior": "Creates end-to-end tests covering successful payments, declined cards, idempotency, and concurrent requests"
+      }
+    ]
+  }
+}

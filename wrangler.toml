@@ -1,0 +1,10 @@
+name = "agentteam-cards"
+compatibility_date = "2026-02-01"
+
+[site]
+bucket = "./api"
+
+# Custom domains configured in Cloudflare Dashboard:
+# agentcard.cc  → this project
+# skillscard.cc → this project
+# teamcard.cc   → this project

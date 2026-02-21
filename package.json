@@ -1,0 +1,19 @@
+{
+  "name": "@agentteam/cards",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AgentTeam Card Registry — Agent, Skill & Team Cards",
+  "scripts": {
+    "validate": "tsx scripts/validate.ts",
+    "build": "tsx scripts/build-api.ts",
+    "dev": "wrangler pages dev api --port 8788"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.0",
+    "ajv-formats": "^3.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "wrangler": "^3.100.0"
+  },
+  "license": "Apache-2.0"
+}

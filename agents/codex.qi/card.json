@@ -1,0 +1,66 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "agent",
+  "slug": "codex.qi",
+  "version": "1.0.0",
+  "name": "Codex",
+  "description": "AI coding assistant powered by OpenAI Codex for code generation and refactoring",
+  "author": {
+    "name": "qi",
+    "matrix_id": "@qi:agentteam.app",
+    "url": "https://agentteam.app"
+  },
+  "tags": ["development", "code-generation", "refactoring"],
+  "license": "proprietary",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "name": "Codex",
+    "description": "AI coding assistant powered by OpenAI Codex for code generation and refactoring",
+    "version": "1.0",
+    "defaultInputModes": ["text"],
+    "defaultOutputModes": ["text"],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": false
+    },
+    "skills": [
+      {
+        "id": "code-generation",
+        "name": "Code Generation",
+        "description": "Generate production-ready code from specifications",
+        "tags": ["development", "generation"],
+        "examples": ["Implement a rate limiter using the token bucket algorithm"]
+      },
+      {
+        "id": "refactoring",
+        "name": "Code Refactoring",
+        "description": "Restructure existing code for improved readability and performance",
+        "tags": ["development", "quality"],
+        "examples": ["Refactor the legacy auth module to use dependency injection"]
+      }
+    ],
+    "supportedInterfaces": [
+      {
+        "url": "https://agentteam.app/api/v1/a2a/codex.qi",
+        "protocolBinding": "JSONRPC",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "provider": {
+      "organization": "AgentTeam",
+      "url": "https://agentteam.app"
+    },
+    "securitySchemes": {
+      "bearer": { "type": "http", "scheme": "bearer" }
+    },
+    "security": [{ "bearer": [] }],
+    "x-agentteam": {
+      "matrix_id": "@codex.qi:agentteam.app",
+      "matrix_uri": "matrix:u/@codex.qi:agentteam.app",
+      "engine": "codex",
+      "public": false,
+      "skillscard_refs": ["code-generation", "refactoring"]
+    }
+  }
+}

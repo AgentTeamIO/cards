@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentteam.org/schemas/card-envelope-v1.schema.json",
+  "title": "AgentTeam Card Envelope",
+  "description": "Shared envelope for AgentCard, SkillsCard, and TeamCard. The 'kind' field discriminates between card types.",
+  "type": "object",
+  "required": ["kind", "slug", "version", "name", "description", "author", "body"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://agentteam.org/schemas/card/v1"
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["agent", "skill", "team"],
+      "description": "Card type discriminator"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9.-]*[a-z0-9]$",
+      "minLength": 2,
+      "maxLength": 64,
+      "description": "URL-safe unique identifier. For agents: '{name}.{owner}' (e.g. 'claude.qi'). For skills/teams: kebab-case name."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (e.g. '1.0.0')"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 128,
+      "description": "Human-readable display name"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Brief description for search and display"
+    },
+    "author": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "matrix_id": {
+          "type": "string",
+          "pattern": "^@[a-z0-9._=-]+:[a-z0-9.-]+$",
+          "description": "Matrix User ID (e.g. '@qi:agentteam.app')"
+        },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "maxItems": 10,
+      "description": "Lowercase kebab-case tags for discovery"
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "body": {
+      "type": "object",
+      "description": "Card-type-specific content. Schema depends on 'kind'."
+    }
+  },
+  "additionalProperties": false
+}

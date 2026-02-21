@@ -1,0 +1,66 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "agent",
+  "slug": "researcher.qi",
+  "version": "1.0.0",
+  "name": "Researcher",
+  "description": "Research-focused AI assistant for documentation and analysis",
+  "author": {
+    "name": "qi",
+    "matrix_id": "@qi:agentteam.app",
+    "url": "https://agentteam.app"
+  },
+  "tags": ["research", "documentation", "analysis"],
+  "license": "proprietary",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "name": "Researcher",
+    "description": "Research-focused AI assistant for documentation and analysis",
+    "version": "1.0",
+    "defaultInputModes": ["text"],
+    "defaultOutputModes": ["text"],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": false
+    },
+    "skills": [
+      {
+        "id": "documentation",
+        "name": "Documentation",
+        "description": "Generate and maintain technical documentation",
+        "tags": ["writing", "documentation"],
+        "examples": ["Document the API endpoints for the billing service"]
+      },
+      {
+        "id": "analysis",
+        "name": "Research Analysis",
+        "description": "Deep analysis of codebases, architectures, and technical decisions",
+        "tags": ["research", "analysis"],
+        "examples": ["Analyze the trade-offs between REST and gRPC for our use case"]
+      }
+    ],
+    "supportedInterfaces": [
+      {
+        "url": "https://agentteam.app/api/v1/a2a/researcher.qi",
+        "protocolBinding": "JSONRPC",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "provider": {
+      "organization": "AgentTeam",
+      "url": "https://agentteam.app"
+    },
+    "securitySchemes": {
+      "bearer": { "type": "http", "scheme": "bearer" }
+    },
+    "security": [{ "bearer": [] }],
+    "x-agentteam": {
+      "matrix_id": "@researcher.qi:agentteam.app",
+      "matrix_uri": "matrix:u/@researcher.qi:agentteam.app",
+      "engine": "claude-code",
+      "public": false,
+      "skillscard_refs": ["documentation", "analysis"]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "documentation",
+  "version": "1.0.0",
+  "name": "Technical Documentation",
+  "description": "Generates clear, maintainable technical documentation including API references, architecture overviews, and READMEs from code analysis.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["documentation", "api-docs", "readme", "architecture"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code", "gemini-cli"],
+    "content_path": "skills/documentation/skill.md",
+    "inputs": ["codebase", "api-surface"],
+    "outputs": ["api-docs", "readme", "architecture-doc"],
+    "examples": [
+      {
+        "prompt": "Document the public API for this REST service",
+        "expected_behavior": "Analyzes route handlers and types to produce endpoint reference with request/response schemas, auth requirements, and examples"
+      },
+      {
+        "prompt": "Write an architecture overview for this project",
+        "expected_behavior": "Reads the codebase structure, identifies key components and data flow, and produces a concise architecture document with diagrams"
+      }
+    ]
+  }
+}

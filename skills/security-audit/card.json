@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "security-audit",
+  "version": "1.0.0",
+  "name": "Security Audit",
+  "description": "Performs systematic security audits covering OWASP top 10, dependency vulnerabilities, secrets detection, and access control review.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["security", "audit", "owasp", "vulnerabilities", "dependencies"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code"],
+    "content_path": "skills/security-audit/skill.md",
+    "inputs": ["codebase", "dependencies"],
+    "outputs": ["vulnerability-report", "remediation-plan"],
+    "examples": [
+      {
+        "prompt": "Audit this web application for security vulnerabilities",
+        "expected_behavior": "Scans for injection flaws, auth bypass, XSS, CSRF, insecure deserialization, and produces a prioritized vulnerability report"
+      },
+      {
+        "prompt": "Check our dependencies for known CVEs",
+        "expected_behavior": "Analyzes dependency manifest files, identifies packages with known vulnerabilities, and recommends version upgrades or alternatives"
+      }
+    ]
+  }
+}

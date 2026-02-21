@@ -1,0 +1,66 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "agent",
+  "slug": "gemini.qi",
+  "version": "1.0.0",
+  "name": "Gemini",
+  "description": "Versatile AI assistant powered by Gemini CLI for code generation and testing",
+  "author": {
+    "name": "qi",
+    "matrix_id": "@qi:agentteam.app",
+    "url": "https://agentteam.app"
+  },
+  "tags": ["development", "code-generation", "testing"],
+  "license": "proprietary",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "name": "Gemini",
+    "description": "Versatile AI assistant powered by Gemini CLI for code generation and testing",
+    "version": "1.0",
+    "defaultInputModes": ["text"],
+    "defaultOutputModes": ["text"],
+    "capabilities": {
+      "streaming": true,
+      "pushNotifications": false
+    },
+    "skills": [
+      {
+        "id": "code-generation",
+        "name": "Code Generation",
+        "description": "Generate code from natural language specifications",
+        "tags": ["development", "generation"],
+        "examples": ["Generate a REST API handler for user authentication"]
+      },
+      {
+        "id": "testing",
+        "name": "Test Generation",
+        "description": "Generate and run comprehensive test suites",
+        "tags": ["development", "quality"],
+        "examples": ["Write unit tests for the payment module"]
+      }
+    ],
+    "supportedInterfaces": [
+      {
+        "url": "https://agentteam.app/api/v1/a2a/gemini.qi",
+        "protocolBinding": "JSONRPC",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "provider": {
+      "organization": "AgentTeam",
+      "url": "https://agentteam.app"
+    },
+    "securitySchemes": {
+      "bearer": { "type": "http", "scheme": "bearer" }
+    },
+    "security": [{ "bearer": [] }],
+    "x-agentteam": {
+      "matrix_id": "@gemini.qi:agentteam.app",
+      "matrix_uri": "matrix:u/@gemini.qi:agentteam.app",
+      "engine": "gemini-cli",
+      "public": false,
+      "skillscard_refs": ["code-generation", "testing"]
+    }
+  }
+}

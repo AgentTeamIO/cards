@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentteam.org/schemas/teamcard-body-v1.schema.json",
+  "title": "TeamCard Body",
+  "description": "Defines a team template — a pre-configured set of agents, skills, and collaboration rules deployable via CLI.",
+  "type": "object",
+  "required": ["agents", "rooms"],
+  "properties": {
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "engine"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Agent role name (becomes the agent name, e.g. 'tenant-agent')"
+          },
+          "engine": {
+            "type": "string",
+            "description": "Required engine type (e.g. 'claude-code', 'gemini-cli')"
+          },
+          "skills": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "SkillsCard slugs to load for this agent"
+          },
+          "description": {
+            "type": "string",
+            "description": "What this agent role does in the team"
+          },
+          "config": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Engine-specific configuration (optional)"
+          }
+        }
+      },
+      "minItems": 1,
+      "description": "Agent roles in the team"
+    },
+    "rooms": {
+      "type": "object",
+      "properties": {
+        "team": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to create the #team coordination room"
+        },
+        "custom": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Additional custom rooms (e.g. ['maintenance-alerts'])"
+        }
+      },
+      "description": "Room configuration for the team"
+    },
+    "cli_command": {
+      "type": "string",
+      "pattern": "^agentteam up --template [a-z0-9-]+$",
+      "description": "CLI command to deploy this template"
+    },
+    "prerequisites": {
+      "type": "object",
+      "properties": {
+        "engines": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Required engines that must be installed"
+        },
+        "tools": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Required MCP tools that must be available"
+        }
+      },
+      "description": "What must be available before deploying"
+    }
+  },
+  "additionalProperties": false
+}

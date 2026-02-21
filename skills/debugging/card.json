@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "debugging",
+  "version": "1.0.0",
+  "name": "Systematic Debugging",
+  "description": "Hypothesis-driven debugging methodology: reproduce, isolate, identify root cause, fix, and verify with regression tests.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["debugging", "troubleshooting", "root-cause-analysis"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code", "gemini-cli"],
+    "content_path": "skills/debugging/skill.md",
+    "inputs": ["error-log", "codebase", "reproduction-steps"],
+    "outputs": ["root-cause", "fix-suggestion", "test-case"],
+    "examples": [
+      {
+        "prompt": "Debug this NullPointerException in the user service",
+        "expected_behavior": "Traces the null reference through the call stack, identifies the missing null check or uninitialized field, and provides a fix with test"
+      },
+      {
+        "prompt": "The API returns 500 intermittently under load",
+        "expected_behavior": "Forms hypotheses (race condition, resource exhaustion, timeout), systematically tests each, identifies root cause, and suggests fix"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentteam.org/schemas/skillscard-body-v1.schema.json",
+  "title": "SkillsCard Body",
+  "description": "Defines a reusable behavior pattern (skill) that AI agents can discover and load.",
+  "type": "object",
+  "required": ["status", "format", "engine_compatibility", "content_path", "inputs", "outputs"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["curated", "verified", "community"],
+      "description": "Trust level: curated (core team), verified (sandbox-tested), community (author-verified)"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["claude-skill-v1", "markdown", "yaml-frontmatter"],
+      "description": "Skill content format. claude-skill-v1 is primary; markdown and yaml-frontmatter are engine-agnostic fallbacks."
+    },
+    "engine_compatibility": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "examples": ["claude-code", "gemini-cli", "codex", "letta", "openclaw"]
+      },
+      "minItems": 1,
+      "description": "Which AI engines can use this skill"
+    },
+    "content_path": {
+      "type": "string",
+      "pattern": "^skills/[a-z0-9-]+/skill\\.md$",
+      "description": "Relative path to skill content file within the cards repo (e.g. 'skills/code-review/skill.md')"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What the skill expects as input context (e.g. ['codebase', 'diff'])"
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What the skill produces (e.g. ['review-comments', 'suggestions'])"
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["prompt", "expected_behavior"],
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "Example user prompt"
+          },
+          "expected_behavior": {
+            "type": "string",
+            "description": "What the agent should do"
+          }
+        }
+      },
+      "description": "Usage examples showing prompt and expected behavior"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Other skill slugs this skill depends on (optional)"
+    }
+  },
+  "additionalProperties": false
+}
