@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "refactoring",
+  "version": "1.0.0",
+  "name": "Code Refactoring",
+  "description": "Restructure existing code to improve readability, maintainability, and performance while preserving behavior.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["refactoring", "code-quality", "maintainability"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code", "codex"],
+    "content_path": "skills/refactoring/skill.md",
+    "inputs": ["codebase", "target-code", "goals"],
+    "outputs": ["refactored-code", "explanation"],
+    "examples": [
+      {
+        "prompt": "Refactor the legacy auth module to use dependency injection",
+        "expected_behavior": "Identifies tight coupling in the auth module, introduces interfaces, restructures initialization to accept dependencies, and verifies existing tests still pass"
+      },
+      {
+        "prompt": "Simplify this function that has grown too complex",
+        "expected_behavior": "Breaks the function into smaller focused functions, improves naming, removes dead code, and explains each change with rationale"
+      }
+    ]
+  }
+}

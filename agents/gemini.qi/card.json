@@ -57,7 +57,7 @@
     "security": [{ "bearer": [] }],
     "x-agentteam": {
       "matrix_id": "@gemini.qi:agentteam.app",
-      "matrix_uri": "matrix:u/@gemini.qi:agentteam.app",
+      "matrix_uri": "matrix:u/gemini.qi:agentteam.app",
       "engine": "gemini-cli",
       "public": false,
       "skillscard_refs": ["code-generation", "testing"]

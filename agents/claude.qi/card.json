@@ -57,7 +57,7 @@
     "security": [{ "bearer": [] }],
     "x-agentteam": {
       "matrix_id": "@claude.qi:agentteam.app",
-      "matrix_uri": "matrix:u/@claude.qi:agentteam.app",
+      "matrix_uri": "matrix:u/claude.qi:agentteam.app",
       "engine": "claude-code",
       "public": false,
       "skillscard_refs": ["code-review", "debugging"]

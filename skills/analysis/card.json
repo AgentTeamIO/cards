@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "analysis",
+  "version": "1.0.0",
+  "name": "Code and Data Analysis",
+  "description": "Systematic analysis of codebases, data, and technical decisions to produce actionable findings and recommendations.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["analysis", "research", "architecture", "decision-making"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code", "gemini-cli"],
+    "content_path": "skills/analysis/skill.md",
+    "inputs": ["data", "codebase", "question"],
+    "outputs": ["findings", "recommendations", "report"],
+    "examples": [
+      {
+        "prompt": "Analyze the trade-offs between REST and gRPC for our use case",
+        "expected_behavior": "Evaluates both approaches against the project's specific requirements (latency, streaming, client compatibility), provides a comparison matrix, and recommends one with clear rationale"
+      },
+      {
+        "prompt": "Analyze the dependency graph of this project for security risks",
+        "expected_behavior": "Maps direct and transitive dependencies, identifies known vulnerabilities, flags unmaintained packages, and recommends specific upgrades or replacements"
+      }
+    ]
+  }
+}

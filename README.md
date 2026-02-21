@@ -36,7 +36,7 @@ Every card shares a common envelope:
 
 ```json
 {
-  "$schema": "https://agentcard.cc/schema/card.json",
+  "$schema": "https://agentteam.org/schemas/card/v1",
   "kind": "agent | skill | team",
   "slug": "unique-identifier",
   "version": "1.0.0",

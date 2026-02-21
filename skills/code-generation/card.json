@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agentteam.org/schemas/card/v1",
+  "kind": "skill",
+  "slug": "code-generation",
+  "version": "1.0.0",
+  "name": "Code Generation",
+  "description": "Generate production-ready code from natural language requirements, matching existing codebase patterns and conventions.",
+  "author": {
+    "name": "agentteam",
+    "matrix_id": "@admin:agentteam.app",
+    "url": "https://agentteam.org"
+  },
+  "tags": ["code-generation", "development", "productivity"],
+  "license": "Apache-2.0",
+  "created_at": "2026-02-21T00:00:00Z",
+  "updated_at": "2026-02-21T00:00:00Z",
+  "body": {
+    "status": "curated",
+    "format": "claude-skill-v1",
+    "engine_compatibility": ["claude-code", "gemini-cli", "codex"],
+    "content_path": "skills/code-generation/skill.md",
+    "inputs": ["requirements", "codebase", "language"],
+    "outputs": ["source-code", "tests"],
+    "examples": [
+      {
+        "prompt": "Generate a REST API handler for user authentication",
+        "expected_behavior": "Produces a complete handler with input validation, authentication logic, error handling, and corresponding unit tests following the project's existing patterns"
+      },
+      {
+        "prompt": "Create a rate limiter using the token bucket algorithm",
+        "expected_behavior": "Implements a thread-safe token bucket rate limiter with configurable parameters, tests covering edge cases, and usage documentation"
+      }
+    ]
+  }
+}

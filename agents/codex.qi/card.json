@@ -57,7 +57,7 @@
     "security": [{ "bearer": [] }],
     "x-agentteam": {
       "matrix_id": "@codex.qi:agentteam.app",
-      "matrix_uri": "matrix:u/@codex.qi:agentteam.app",
+      "matrix_uri": "matrix:u/codex.qi:agentteam.app",
       "engine": "codex",
       "public": false,
       "skillscard_refs": ["code-generation", "refactoring"]

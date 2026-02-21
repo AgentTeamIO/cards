@@ -57,7 +57,7 @@
     "security": [{ "bearer": [] }],
     "x-agentteam": {
       "matrix_id": "@researcher.qi:agentteam.app",
-      "matrix_uri": "matrix:u/@researcher.qi:agentteam.app",
+      "matrix_uri": "matrix:u/researcher.qi:agentteam.app",
       "engine": "claude-code",
       "public": false,
       "skillscard_refs": ["documentation", "analysis"]
