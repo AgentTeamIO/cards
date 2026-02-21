@@ -6,11 +6,11 @@
 //   teamcard.cc    → serves api/v1/teams/*  (TeamCard view)
 //
 // Routes:
-//   GET /                        → redirect to /api/v1/{kind}/index.json
-//   GET /api/v1/{kind}/*         → pass through (static files)
-//   GET /api/v1/index.json       → full index (all domains)
-//   GET /{slug}.json             → shortcut: /api/v1/{kind}/{slug}.json
-//   GET /{slug}/a2a.json         → shortcut: /api/v1/agents/{slug}/a2a.json (agentcard.cc only)
+//   GET /                        → redirect to /v1/{kind}/index.json
+//   GET /v1/{kind}/*         → pass through (static files)
+//   GET /v1/index.json       → full index (all domains)
+//   GET /{slug}.json             → shortcut: /v1/{kind}/{slug}.json
+//   GET /{slug}/a2a.json         → shortcut: /v1/agents/{slug}/a2a.json (agentcard.cc only)
 
 interface Env {
   ASSETS: Fetcher;
@@ -47,7 +47,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return new Response(null, {
       status: 302,
       headers: {
-        Location: `${url.origin}/api/v1/${kind}/index.json`,
+        Location: `${url.origin}/v1/${kind}/index.json`,
         ...Object.fromEntries(corsHeaders()),
       },
     });
@@ -57,19 +57,19 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (kind === "agents") {
     const a2aMatch = url.pathname.match(/^\/([a-z0-9][a-z0-9.-]*)\/a2a\.json$/);
     if (a2aMatch) {
-      url.pathname = `/api/v1/agents/${a2aMatch[1]}/a2a.json`;
+      url.pathname = `/v1/agents/${a2aMatch[1]}/a2a.json`;
       return fetchAsset(context, url);
     }
   }
 
-  // Shortcut: /{slug}.json → /api/v1/{kind}/{slug}.json
+  // Shortcut: /{slug}.json → /v1/{kind}/{slug}.json
   const slugMatch = url.pathname.match(/^\/([a-z0-9][a-z0-9.-]*)\.json$/);
   if (slugMatch) {
-    url.pathname = `/api/v1/${kind}/${slugMatch[1]}.json`;
+    url.pathname = `/v1/${kind}/${slugMatch[1]}.json`;
     return fetchAsset(context, url);
   }
 
-  // Pass through (static file serving for /api/v1/* and everything else)
+  // Pass through (static file serving for /v1/* and everything else)
   const response = await context.next();
   return addCorsHeaders(response);
 };
